@@ -1,14 +1,18 @@
-// TODO: replace with the real link.
-const COMMUNITY_URL = "#community";
-
-
-export default function CommunityButton() {
+export default function CommunityButton({
+  className = "bg-blue text-cream",
+  href = "#contact",
+  label = "Join the community",
+}: {
+  className?: string;
+  href?: string;
+  label?: string;
+}) {
   return (
     <a
-      href={COMMUNITY_URL}
-      className="btn-hard inline-block border-2 border-coal bg-blue px-6 py-4 text-center text-base font-black tracking-wide text-cream  sm:text-lg"
+      href={href}
+      className={`btn-hard inline-block rounded-lg px-6 py-4 text-center text-base font-black tracking-wide sm:text-lg ${className}`}
     >
-      Join the community
+      {label}
     </a>
   );
 }

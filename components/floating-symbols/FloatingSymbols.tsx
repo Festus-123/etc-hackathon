@@ -20,7 +20,7 @@ const PALETTES = {
     "#dc2626",
     "var(--coal)",
   ],
-  light: ["#ffffff", "#fde047", "#bfdbfe", "#fecaca", "#14130f"],
+  light: ["#ffffff", "#bfdbfe", "#93c5fd", "#dbeafe", "#ffffff"],
 };
 
 const VARIANTS: Sym[][] = [
@@ -77,7 +77,7 @@ export default function FloatingSymbols({
               left: s.left,
               color: "transparent",
               WebkitTextStroke: `2px ${colors[s.color % colors.length]}`,
-              opacity: 0.7,
+              opacity: 0.55,
               "--dur": `${s.dur}s`,
               "--delay": `${s.delay}s`,
               "--rot": `${s.rot}deg`,

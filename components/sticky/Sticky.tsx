@@ -18,6 +18,8 @@ export default function Sticky({
   offset = 0,
   className,
   style,
+  id,
+  dataNav,
   children,
 }: {
   as?: ElementType;
@@ -25,6 +27,9 @@ export default function Sticky({
   offset?: number;
   className?: string;
   style?: CSSProperties;
+  id?: string;
+  /** "dark" or "light": lets the nav match the background under it. */
+  dataNav?: "dark" | "light";
   children: ReactNode;
 }) {
   const Tag = as;
@@ -51,6 +56,8 @@ export default function Sticky({
   return (
     <Tag
       ref={ref}
+      id={id}
+      data-nav={dataNav}
       className={`sticky ${className || ""}`}
       style={{ top: offset, ...style }}
     >

@@ -35,12 +35,12 @@ function Unit({
     >
       <span
         className={`text-5xl font-black tabular-nums sm:text-7xl ${
-          accent ? "text-cream" : plain ? plain : "text-blue"
+          accent ? "text-blue-soft" : plain ? plain : "text-white"
         }`}
       >
         {String(value).padStart(2, "0")}
       </span>
-      <span className="mt-1 text-[10px] font-bold uppercase tracking-widest text-black sm:text-sm">
+      <span className="mt-1 text-[10px] font-bold uppercase tracking-widest text-white/80 sm:text-sm">
         {label}
       </span>
     </div>
@@ -81,15 +81,15 @@ export default function Countdown() {
     >
       <div className="mb-5 flex flex-col items-center gap-2">
         <span
-          className={` px-2 py-1 text-xs font-bold uppercase text-black ${badge}`}
+          className={` px-2 py-1 text-xs font-bold uppercase text-white ${badge}`}
         >
           {phase === "live" ? "● Live" : phase === "before" ? "Upcoming..." : "Closed"}
         </span>
-        <h2 className="text-lg font-black sm:text-2xl">{heading}</h2>
+        <h2 className="text-lg font-black text-white sm:text-2xl">{heading}</h2>
       </div>
 
       {phase === "ended" ? (
-        <p className="text-xl font-bold">Thanks to everyone who took part.</p>
+        <p className="text-xl font-bold text-white">Thanks to everyone who took part.</p>
       ) : (
         <div
           className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4"
@@ -97,14 +97,14 @@ export default function Countdown() {
           aria-live="off"
           suppressHydrationWarning
         >
-          <Unit value={d} label="Days" plain='text-amber-900'/>
-          <Unit value={h} label="Hours" plain="text-red-700"/>
-          <Unit value={m} label="Mins" plain="text-yellow-500" hideOnMobile />
+          <Unit value={d} label="Days" plain="text-white"/>
+          <Unit value={h} label="Hours" plain="text-white"/>
+          <Unit value={m} label="Mins" plain="text-blue-soft" hideOnMobile />
           <Unit value={s} label="Secs" accent hideOnMobile />
         </div>
       )}
 
-      <p className="mt-4 text-md font-bold tracking-wider sm:text-lg mt-8">
+      <p className="mt-8 text-sm font-bold tracking-wider text-white/90 sm:text-lg">
         12 Dec 2026 &rarr; 12 Jan 2027 &middot; West Africa Time
       </p>
     </div>
