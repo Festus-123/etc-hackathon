@@ -1,0 +1,12 @@
+font mono 
+web 3 style --thich drop shadows, solid colors 
+lgiht theme
+one page 
+biege cream, coal black,  green and blue
+"ETC Engineering Tech Community OAUSTECH" -- Welcome back to school hackathon 2027
+who can participate... ? Students of Oaustech, not limited to ETC memeber alone
+description. Join the ETC... hackathon, win a price pool... 
+criterias -- solo with group capped at 5 max, porject must be something that solves a problem, Formal presentation
+		   deadline is 12th december to 12th january
+CTA -- Register now, Join the community
+strict rules -- Any use of AI should and must be strictly noted and indicated.

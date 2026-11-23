@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #f3ead7;
+  --cream-deep: #e8dcc0;
+  --coal: #14130f;
+  --green: #1f9d55;
+  --green-soft: #b9e6c9;
+  --blue: #2457e6;
+  --blue-soft: #c4d3fb;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-coal: var(--coal);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --shadow-hard: 8px 8px 0 0 var(--coal);
+  --shadow-hard-sm: 4px 4px 0 0 var(--coal);
+}
+
+html {
+  color-scheme: light;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background: var(--cream);
+  color: var(--coal);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* subtle grid backdrop, solid line colour only */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--cream-deep) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cream-deep) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+
+/* simple fade in */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.fade-in {
+  opacity: 0;
+  animation: fade-in 0.6s ease-out forwards;
+  animation-delay: var(--d, 0s);
+}
+
+/* register drawer */
+@keyframes slide-in {
+  from { transform: translateX(100%); }
+  to { transform: none; }
+}
+@keyframes fade-only {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.drawer-in { animation: slide-in 0.3s ease-out; }
+.overlay-in { animation: fade-only 0.3s ease-out; }
+
+/* floating hero symbols */
+@keyframes float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--rot, 0deg)); }
+  50% { transform: translate3d(14px, -28px, 0) rotate(calc(var(--rot, 0deg) + 8deg)); }
+}
+.float-icon {
+  animation: float var(--dur, 10s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-icon { animation: none; }
+  .fade-in { animation: none; opacity: 1; }
+  .drawer-in, .overlay-in { animation: none; }
+}
+
+.btn-hard {
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.btn-hard:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 var(--coal);
+}
+.btn-hard:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0 0 0 0 var(--coal);
+}
+
+/* "Ready to build?" section: drifting aurora + moving grid over green */
+.time-bg {
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(45% 60% at 15% 15%, rgba(255, 255, 255, 0.28), transparent 70%),
+    radial-gradient(50% 70% at 90% 90%, rgba(36, 87, 230, 0.6), transparent 70%),
+    radial-gradient(40% 55% at 85% 10%, rgba(234, 179, 8, 0.45), transparent 70%),
+    radial-gradient(40% 50% at 10% 95%, rgba(0, 0, 0, 0.35), transparent 70%),
+    var(--green);
+  background-size: 160% 160%, 160% 160%, 160% 160%, 160% 160%, auto;
+  animation: aurora 16s ease-in-out infinite alternate;
+}
+.time-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse at center, #000 25%, transparent 80%);
+  animation: grid-drift 5s linear infinite;
+}
+@keyframes aurora {
+  from { background-position: 0% 0%, 100% 100%, 100% 0%, 0% 100%, 0 0; }
+  to { background-position: 100% 100%, 0% 0%, 0% 100%, 100% 0%, 0 0; }
+}
+@keyframes grid-drift {
+  to { background-position: 36px 36px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .time-bg, .time-bg::before { animation: none; }
+}
